@@ -4,12 +4,12 @@
     <form class="example-form row mt-3">
         <mat-form-field class="col-12">
             <mat-label>Patient Name</mat-label>
-            <input matInput placeholder="Ex. Raja">
+            <input [(ngModel)]="patientName" [ngModelOptions]="{standalone: true}" matInput placeholder="Ex. Raja">
         </mat-form-field>
 
         <mat-form-field class="col">
             <mat-label>Reason</mat-label>
-            <textarea matInput placeholder="Ex. Headache for last 4 days"></textarea>
+            <textarea [(ngModel)]="reason" [ngModelOptions]="{standalone: true}" matInput placeholder="Ex. Headache for last 4 days"></textarea>
         </mat-form-field>
     </form>
     <div class="container">
@@ -19,7 +19,7 @@
                     From Time
                 </div> 
                 <div class="24hr-example">
-                    <input disabled="disabled" (click)="open()" type="time" value="{{fromTime}}">
+                    <input  (click)="from_Time()" type="time" value="{{selectedFromTime}}">
                </div>
             </div>
             <div class="col-6">
@@ -36,7 +36,7 @@
             <div class="text-right  m-3 mr-0">
                 <button (click)="closeDialog()" class="btn pull-right " mat-raised-button
                     color="primary">Cancel</button>
-                <button class="btn btn-primary pull-right " mat-raised-button color="primary">Book </button>
+                <button class="btn btn-primary pull-right" (click)="bookNow()" mat-raised-button color="primary">Book </button>
             </div>
 
 </div>

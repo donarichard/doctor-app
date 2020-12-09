@@ -21,6 +21,9 @@ import { AddSlotComponent } from './components/add-slot/add-slot.component';
 import { AmazingTimePickerModule } from 'amazing-time-picker';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { APIInterceptor } from './middleware/interceptor';
+import { HttpClientModule } from '@angular/common/http';
 const materialModules = [
   MatDatepickerModule,
   MatNativeDateModule,
@@ -41,17 +44,22 @@ const materialModules = [
     DashboardComponent,
     AddSlotComponent,
     DatePickerComponent,
-    
+
   ],
   imports: [
     BrowserModule,
+    HttpClientModule ,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
     AmazingTimePickerModule,
-    ...materialModules
+    ...materialModules,
   ],
-  providers: [],
+  providers: [   {
+    provide: HTTP_INTERCEPTORS,
+    useClass: APIInterceptor,
+    multi: true,
+  },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
