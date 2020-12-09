@@ -1,0 +1,42 @@
+<div class="container">
+    <h1 mat-dialog-title>Add Appointment </h1>
+    {{data.selectedDate}}
+    <form class="example-form row mt-3">
+        <mat-form-field class="col-12">
+            <mat-label>Patient Name</mat-label>
+            <input matInput placeholder="Ex. Raja">
+        </mat-form-field>
+
+        <mat-form-field class="col">
+            <mat-label>Reason</mat-label>
+            <textarea matInput placeholder="Ex. Headache for last 4 days"></textarea>
+        </mat-form-field>
+    </form>
+    <div class="container">
+        <div class="row pl-5 pb-2">
+            <div class="col-6 pl-0 align-self-end justify-content-end align-content-end">
+                <div class="p-2 pl-0">
+                    From Time
+                </div> 
+                <div class="24hr-example">
+                    <input disabled="disabled" (click)="open()" type="time" value="{{fromTime}}">
+               </div>
+            </div>
+            <div class="col-6">
+                <div class="p-2 pl-0">
+                    To Time
+                </div>
+                <input  (click)="open()" type="time" value="{{selectedTime}}">
+            </div>
+        </div>
+        <!-- <div class="flex-end justify-content-end align-content-end align-self-end">
+            <button class="btn btn-primary pull-right " mat-raised-button color="primary">Add Appointment</button>
+        </div> -->
+    </div>
+            <div class="text-right  m-3 mr-0">
+                <button (click)="closeDialog()" class="btn pull-right " mat-raised-button
+                    color="primary">Cancel</button>
+                <button class="btn btn-primary pull-right " mat-raised-button color="primary">Book </button>
+            </div>
+
+</div>
